@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-sentinel-bg text-sentinel-text font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(0, 229, 255, 0.06), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(0, 229, 255, 0.04), transparent 45%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    @apply bg-sentinel-cyan/30 text-white;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-2xl border border-white/[0.08];
+    box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.06), inset -1px -1px 0 0 rgba(0,229,255,0.04), 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .glass-strong {
+    @apply bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12];
+    box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.08), inset -1px -1px 0 0 rgba(0,229,255,0.06), 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .glass-cyan {
+    @apply bg-sentinel-cyan/[0.05] backdrop-blur-2xl border border-sentinel-cyan/20;
+    box-shadow: inset 1px 1px 0 0 rgba(0,229,255,0.1), 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .glass-reflection {
+    position: relative;
+  }
+  .glass-reflection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 40%, transparent 60%, rgba(0,229,255,0.03) 100%);
+    pointer-events: none;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #00E5FF 60%, #0099b3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #00E5FF 0%, #0099b3 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .grid-bg-fine {
+    background-image:
+      linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .corner-bracket::before,
+  .corner-bracket::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: theme('colors.sentinel.cyan');
+  }
+  .corner-bracket::before {
+    top: 0;
+    left: 0;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  .corner-bracket::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+  .shimmer-text {
+    background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(0,229,255,1) 50%, rgba(255,255,255,0.4) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 2.5s linear infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2a52;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0099b3;
+}
