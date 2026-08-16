@@ -1,7 +1,5 @@
 # Sentinel AI — OSINT Aggregator & Correlation Platform
 
-Documentation covering architecture, source connectors, and correlation logic,
-per the Web Wonders 2026 problem statement deliverables.
 
 ## 1. Architecture
 

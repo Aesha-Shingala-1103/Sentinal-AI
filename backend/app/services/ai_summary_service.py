@@ -79,13 +79,23 @@ Return ONLY JSON in this format:
             )
 
             return json.loads(text)
-
+        
         except Exception as e:
+
+            error_text = str(e)
+
+            if "429" in error_text or "RESOURCE_EXHAUSTED" in error_text:
+                message = "Daily AI summary limit reached. Try again later."
+            elif "503" in error_text or "UNAVAILABLE" in error_text:
+                message = "AI summary service is temporarily overloaded. Try again in a few minutes."
+            else:
+                message = "Unable to generate AI summary."
 
             return {
                 "risk_level": "Unknown",
-                "summary": "Unable to generate AI summary.",
+                "summary": message,
                 "key_findings": [],
                 "recommendations": [],
-                "error": str(e)
+                "error": error_text
             }
+       
