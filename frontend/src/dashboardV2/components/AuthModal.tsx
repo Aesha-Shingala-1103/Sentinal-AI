@@ -104,7 +104,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Full name"
-                    className="h-10 w-full rounded-lg border border-white/5 bg-navy-800/60 pl-9 pr-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                    className="h-10 w-full rounded-lg border border-white/10 bg-white pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
                   />
                 </div>
               )}
@@ -117,7 +117,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Email"
-                  className="h-10 w-full rounded-lg border border-white/5 bg-navy-800/60 pl-9 pr-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                  className="h-10 w-full rounded-lg border border-white/10 bg-white pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
                 />
               </div>
 
@@ -130,7 +130,7 @@ export default function AuthModal({ open, onClose }: AuthModalProps) {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Password (min. 8 characters)"
-                  className="h-10 w-full rounded-lg border border-white/5 bg-navy-800/60 pl-9 pr-3 text-sm text-slate-200 placeholder:text-slate-600 focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
+                  className="h-10 w-full rounded-lg border border-white/10 bg-white pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-cyan-500/40 focus:outline-none focus:ring-1 focus:ring-cyan-500/30"
                 />
               </div>
 
