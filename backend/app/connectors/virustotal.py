@@ -11,8 +11,17 @@ class VirusTotalConnector(BaseConnector):
 
         url = f"https://www.virustotal.com/api/v3/domains/{domain}"
 
+        api_key = os.getenv("VT_API_KEY")
+
+        if not api_key:
+            return ConnectorResult(
+                source="VirusTotal",
+                success=False,
+                error="VirusTotal API key not configured (VT_API_KEY env var missing)"
+            )
+
         headers = {
-            "x-apikey": os.getenv("VT_API_KEY")
+            "x-apikey": api_key
         }
 
         try:

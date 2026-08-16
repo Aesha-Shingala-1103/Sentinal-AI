@@ -25,6 +25,13 @@ class RDAPConnector(BaseConnector):
 
                 data = response.json()
 
+                events = {}
+                for event in data.get("events", []):
+                    action = event.get("eventAction")
+                    date = event.get("eventDate")
+                    if action and date:
+                        events[action] = date
+
                 return ConnectorResult(
                     source="RDAP",
                     success=True,
@@ -38,7 +45,10 @@ class RDAPConnector(BaseConnector):
                         "entities": [
                             entity.get("handle")
                             for entity in data.get("entities", [])
-                        ]
+                        ],
+                        "registration_date": events.get("registration"),
+                        "expiration_date": events.get("expiration"),
+                        "last_changed_date": events.get("last changed"),
                     }
                 )
 

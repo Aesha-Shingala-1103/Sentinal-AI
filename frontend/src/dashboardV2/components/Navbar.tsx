@@ -14,7 +14,8 @@ export default function Navbar({ onOpenSidebar }: NavbarProps) {
   const [authOpen, setAuthOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  return (
+  return(
+    <>
     <header className="sticky top-0 z-20 glass border-b border-cyan-500/10">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-3">
@@ -104,8 +105,9 @@ export default function Navbar({ onOpenSidebar }: NavbarProps) {
           )}
         </div>
       </div>
+    </header>  
 
       <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
-    </header>
+      </>  
   );
 }

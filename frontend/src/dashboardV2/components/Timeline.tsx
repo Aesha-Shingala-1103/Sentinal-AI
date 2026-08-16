@@ -3,10 +3,13 @@ import { Clock, AlertTriangle, AlertCircle, Info } from "lucide-react";
 
 interface TimelineItem {
   date: string;
+  date_sort?: string;
   title: string;
+  description?: string;
   source?: string;
+  type?: string;
+  url?: string;
 }
-
 interface TimelineProps {
   timeline: TimelineItem[];
 }
@@ -16,6 +19,7 @@ const SEVERITY = {
   warn: { color: "#FFB020", icon: AlertCircle, label: "Warning" },
   info: { color: "#00E5FF", icon: Info, label: "Info" },
 } as const;
+
 
 export default function Timeline({ timeline }: TimelineProps) {
   return (
@@ -92,8 +96,25 @@ export default function Timeline({ timeline }: TimelineProps) {
                     </div>
 
                     <h3 className="mt-1 text-sm font-medium text-slate-200">
-                      {event.title}
+                    {event.title}
                     </h3>
+
+                    {event.description && (
+                      <p className="mt-0.5 text-xs text-slate-400">
+                        {event.url ? (
+                          <a
+                            href={event.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-cyan-400 hover:underline"
+                          >
+                            {event.description}
+                          </a>
+                        ) : (
+                          event.description
+                        )}
+                      </p>
+                    )}
                   </div>
                 </motion.div>
               );

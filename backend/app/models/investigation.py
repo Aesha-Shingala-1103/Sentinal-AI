@@ -12,6 +12,14 @@ class InvestigationRequest(BaseModel):
         "wallet"
     ]
 
+class TimelineEvent(BaseModel):
+    date: str
+    date_sort: str
+    title: str
+    description: str
+    source: str
+    type: str
+    url: str | None = None
 
 class InvestigationResponse(BaseModel):
     success: bool
@@ -22,7 +30,7 @@ class InvestigationResponse(BaseModel):
     risk: dict[str, Any] = {}
     correlation: dict[str, Any] = {}
     graph: dict[str, Any]
-    timeline: list
+    timeline: list[TimelineEvent]
     image_correlation: dict[str, Any] = {}
     synthetic_identity: dict[str, Any] = {}
     related_cases: list = []

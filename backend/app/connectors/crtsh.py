@@ -11,14 +11,30 @@ class CrtShConnector:
 
         try:
 
-            async with httpx.AsyncClient(timeout=20) as client:
+            async with httpx.AsyncClient(timeout=30) as client:
 
                 response = await client.get(
                     self.BASE_URL,
                     params={
                         "q": domain,
                         "output": "json"
+                    },
+                    headers={
+                        "User-Agent": (
+                            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                            "AppleWebKit/537.36 (KHTML, like Gecko) "
+                            "Chrome/120.0 Safari/537.36"
+                        )
                     }
+                )
+
+            if response.status_code == 404:
+                # crt.sh returns 404 when a query matches zero certificates --
+                # treat as a successful lookup with no results, not a failure.
+                return ConnectorResult(
+                    source="crt.sh",
+                    success=True,
+                    data={"certificates": []}
                 )
 
             if response.status_code != 200:
